@@ -1,0 +1,8 @@
+{
+  "name": "tag-helper",
+  "description": "Rails' TagHelper ported to Javascript",
+  "keywords": ["rails", "tag-helper"],
+  "version": "0.0.1",
+  "author": "Mark Huetsch <markhuetsch@gmail.com>",
+  "license": "MIT"
+}
