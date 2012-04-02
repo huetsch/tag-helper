@@ -6,8 +6,6 @@
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-root = exports ? this
-
 require 'cream'
 
 # XXX this function is a quick hack to translate TagHelper more easily. i'm pretty sure it doesn't actually ensure safety because it
@@ -105,10 +103,7 @@ helper = new TagHelper()
  #  'a' + @__value__
 #String::html_safe = -> new SafeBuffer(this.valueOf())
 
-if window?
-  window.TagHelper = helper
-else
-  root.html_escape = helper.html_escape
-  root.tag = helper.tag
-  root.content_tag = helper.content_tag_string
-  root.tag_options = helper.tag_options
+exports.html_escape = helper.html_escape
+exports.tag = helper.tag
+exports.content_tag = helper.content_tag_string
+exports.tag_options = helper.tag_options

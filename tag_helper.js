@@ -1,8 +1,6 @@
 (function() {
-  var TagHelper, helper, root,
+  var TagHelper, helper,
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
-
-  root = typeof exports !== "undefined" && exports !== null ? exports : this;
 
   require('cream');
 
@@ -109,13 +107,12 @@
 
   helper = new TagHelper();
 
-  if (typeof window !== "undefined" && window !== null) {
-    window.TagHelper = helper;
-  } else {
-    root.html_escape = helper.html_escape;
-    root.tag = helper.tag;
-    root.content_tag = helper.content_tag_string;
-    root.tag_options = helper.tag_options;
-  }
+  exports.html_escape = helper.html_escape;
+
+  exports.tag = helper.tag;
+
+  exports.content_tag = helper.content_tag_string;
+
+  exports.tag_options = helper.tag_options;
 
 }).call(this);
