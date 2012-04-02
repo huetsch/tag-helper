@@ -3,7 +3,11 @@
   "description": "Rails' TagHelper ported to Javascript",
   "keywords": ["rails", "tag-helper"],
   "homepage": "https://github.com/huetsch/tag-helper",
-  "version": "0.0.1",
+  "dependencies": {
+    "cream": ">= 0.0.3"
+  },
+  "main": "./tag_helper.js",
+  "version": "0.0.3",
   "author": "Mark Huetsch <markhuetsch@gmail.com>",
   "license": "MIT"
 }

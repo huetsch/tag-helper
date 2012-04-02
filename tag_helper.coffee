@@ -8,7 +8,7 @@
 
 root = exports ? this
 
-String::dasherize = -> this.replace(/_/g, '-')
+require 'cream'
 
 # XXX this function is a quick hack to translate TagHelper more easily. i'm pretty sure it doesn't actually ensure safety because it
 # doesn't protect against unsafe string methods or concatenation (and we can't overload the + operator), but it's probably good
