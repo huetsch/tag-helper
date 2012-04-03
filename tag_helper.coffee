@@ -8,18 +8,11 @@
 
 require 'cream'
 
-# XXX this function is a quick hack to translate TagHelper more easily. i'm pretty sure it doesn't actually ensure safety because it
-# doesn't protect against unsafe string methods or concatenation (and we can't overload the + operator), but it's probably good
-# enough for now
-String::html_safe = ->
-  this.is_html_safe = 1
-  this
-
 class TagHelper
 
-  HTML_ESCAPE: { '&': '&amp;', '>': '&gt;', '<': '&lt;', '"': '&quot;' }
-  JSON_ESCAPE: { '&': '\u0026', '>': '\u003E', '<': '\u003C' }
-  BOOLEAN_ATTRIBUTES: [
+  HTML_ESCAPE = { '&': '&amp;', '>': '&gt;', '<': '&lt;', '"': '&quot;' }
+  JSON_ESCAPE = { '&': '\u0026', '>': '\u003E', '<': '\u003C' }
+  BOOLEAN_ATTRIBUTES = [
     'disabled', 'readonly', 'multiple', 'checked', 'autobuffer', 'autoplay', 'controls', 'loop', 'selected', 'hidden', 'scoped',
     'async', 'defer', 'reversed', 'ismap', 'seemless', 'muted', 'required', 'autofocus', 'novalidate', 'formnovalidate', 'open',
     'pubdate'
@@ -61,7 +54,7 @@ class TagHelper
             if escape
               v = @html_escape v
             attrs.push "data-#{k.dasherize()}=\"#{v}\""
-        else if key in @BOOLEAN_ATTRIBUTES
+        else if key in BOOLEAN_ATTRIBUTES
           if value
             attrs.push "#{key}=\"#{key}\""
         else if (value isnt null and value isnt undefined)
@@ -106,6 +99,3 @@ exports.html_escape = helper.html_escape
 exports.tag = helper.tag
 exports.content_tag = helper.content_tag_string
 exports.tag_options = helper.tag_options
-exports.BOOLEAN_ATTRIBUTES = helper.BOOLEAN_ATTRIBUTES
-exports.HTML_ESCAPE = helper.HTML_ESCAPE
-exports.JSON_ESCAPE = helper.JSON_ESCAPE
