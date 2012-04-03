@@ -26,6 +26,8 @@
       '<': '\u003C'
     };
 
+    TagHelper.prototype.BOOLEAN_ATTRIBUTES = ['disabled', 'readonly', 'multiple', 'checked', 'autobuffer', 'autoplay', 'controls', 'loop', 'selected', 'hidden', 'scoped', 'async', 'defer', 'reversed', 'ismap', 'seemless', 'muted', 'required', 'autofocus', 'novalidate', 'formnovalidate', 'open', 'pubdate'];
+
     TagHelper.prototype.html_escape = function(s) {
       if (!(s instanceof String)) s = String(s);
       if (s.is_html_safe == null) {
@@ -34,8 +36,6 @@
         return s;
       }
     };
-
-    TagHelper.prototype.BOOLEAN_ATTRIBUTES = ['disabled', 'readonly', 'multiple', 'checked', 'autobuffer', 'autoplay', 'controls', 'loop', 'selected', 'hidden', 'scoped', 'async', 'defer', 'reversed', 'ismap', 'seemless', 'muted', 'required', 'autofocus', 'novalidate', 'formnovalidate', 'open', 'pubdate'];
 
     TagHelper.prototype.tag = function(name, options, open, escape) {
       var tag_options;
@@ -114,5 +114,11 @@
   exports.content_tag = helper.content_tag_string;
 
   exports.tag_options = helper.tag_options;
+
+  exports.BOOLEAN_ATTRIBUTES = helper.BOOLEAN_ATTRIBUTES;
+
+  exports.HTML_ESCAPE = helper.HTML_ESCAPE;
+
+  exports.JSON_ESCAPE = helper.JSON_ESCAPE;
 
 }).call(this);
