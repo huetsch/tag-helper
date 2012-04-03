@@ -1,4 +1,4 @@
-TagHelper = require 'tag-helper'
+TagHelper = require '../tag_helper.coffee'
 
 # note, the sorting of attributes seems different than rails, but I don't understand why from the code. not a big deal.
 describe "TagHelper", ->

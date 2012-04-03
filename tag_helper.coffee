@@ -19,6 +19,11 @@ class TagHelper
 
   HTML_ESCAPE: { '&': '&amp;', '>': '&gt;', '<': '&lt;', '"': '&quot;' }
   JSON_ESCAPE: { '&': '\u0026', '>': '\u003E', '<': '\u003C' }
+  BOOLEAN_ATTRIBUTES: [
+    'disabled', 'readonly', 'multiple', 'checked', 'autobuffer', 'autoplay', 'controls', 'loop', 'selected', 'hidden', 'scoped',
+    'async', 'defer', 'reversed', 'ismap', 'seemless', 'muted', 'required', 'autofocus', 'novalidate', 'formnovalidate', 'open',
+    'pubdate'
+  ]
 
   # ==== Example:
   # puts html_escape("is a > 0 & a < 10?")
@@ -30,12 +35,6 @@ class TagHelper
       s.replace(/&/g, "&amp;").replace(/\"/g, "&quot;").replace(/>/g, "&gt;").replace(/</g, "&lt;").html_safe()
     else
       s
-
-  BOOLEAN_ATTRIBUTES: [
-    'disabled', 'readonly', 'multiple', 'checked', 'autobuffer', 'autoplay', 'controls', 'loop', 'selected', 'hidden', 'scoped',
-    'async', 'defer', 'reversed', 'ismap', 'seemless', 'muted', 'required', 'autofocus', 'novalidate', 'formnovalidate', 'open',
-    'pubdate'
-  ]
 
   tag: (name, options = null, open = false, escape = true) ->
     tag_options = ''
@@ -107,3 +106,6 @@ exports.html_escape = helper.html_escape
 exports.tag = helper.tag
 exports.content_tag = helper.content_tag_string
 exports.tag_options = helper.tag_options
+exports.BOOLEAN_ATTRIBUTES = helper.BOOLEAN_ATTRIBUTES
+exports.HTML_ESCAPE = helper.HTML_ESCAPE
+exports.JSON_ESCAPE = helper.JSON_ESCAPE
